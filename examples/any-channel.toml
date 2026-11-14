@@ -1,0 +1,9 @@
+# Template for any other channel or playlist with full concerts.
+# 1. Point `source` at the channel (https://www.youtube.com/@name) or playlist URL.
+# 2. Make `include` match only the titles of the full concerts; check with `tinydesk sync --dry-run`.
+# 3. If titles are not "Artist: Tiny Desk ...", set `title_pattern` with a (?P<artist>...) group.
+source = "https://www.youtube.com/@example"
+include = "tiny desk"
+exclude = "trailer|interview|behind the scenes"
+title_pattern = '^Tiny Desk Concert\s*-\s*(?P<artist>.+)$'
+language = "en"

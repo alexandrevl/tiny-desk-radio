@@ -1,0 +1,5 @@
+# Tiny Desk Brasil (the built-in default, spelled out).
+source = "https://www.youtube.com/channel/UCFV9qv5deOsJ_AF7k_t4h3A/videos"
+include = "tiny desk (brasil|brazil)"
+exclude = "premiere|tiny ?talks"
+language = "pt"
