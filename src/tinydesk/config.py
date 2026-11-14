@@ -3,7 +3,7 @@
 import os
 import re
 import tomllib
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, field, fields
 from pathlib import Path
 
 DEFAULT_SOURCE = "https://www.youtube.com/channel/UCFV9qv5deOsJ_AF7k_t4h3A/videos"
@@ -37,7 +37,7 @@ class Config:
     album: str = "Tiny Desk Radio"
     genre: str = "Tiny Desk"
     library: Path = Path("library")
-    music_dir: Path = Path(DEFAULT_MUSIC_DIR)
+    music_dir: Path = field(default_factory=lambda: Path(DEFAULT_MUSIC_DIR).expanduser())
 
 
 SETTINGS = [f.name for f in fields(Config)]
