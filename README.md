@@ -259,4 +259,4 @@ downloaded at first run), [ai-edge-litert](https://pypi.org/project/ai-edge-lite
 
 ## License
 
-[MIT](LICENSE) © 2026 Alexandre VL
+[MIT](LICENSE) © 2026 Alexandre Lima

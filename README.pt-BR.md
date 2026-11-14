@@ -264,4 +264,4 @@ baixado na primeira execução), [ai-edge-litert](https://pypi.org/project/ai-ed
 
 ## Licença
 
-[MIT](LICENSE) © 2026 Alexandre VL
+[MIT](LICENSE) © 2026 Alexandre Lima

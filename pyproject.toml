@@ -5,7 +5,7 @@ description = "Turn a Tiny Desk YouTube channel into per-song, tagged M4A files 
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
-authors = [{ name = "Alexandre VL" }]
+authors = [{ name = "Alexandre Lima" }]
 requires-python = ">=3.12,<3.13"
 keywords = ["tiny-desk", "youtube", "apple-music", "yt-dlp", "whisper", "m4a"]
 classifiers = [
