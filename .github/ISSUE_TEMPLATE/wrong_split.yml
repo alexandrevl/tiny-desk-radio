@@ -1,0 +1,53 @@
+name: Wrong split
+description: A song was cut in the wrong place, merged with another, labeled with the wrong title, or includes talk.
+labels: [splitting]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you, these reports are how the splitting gets better. Please do **not** attach audio.
+  - type: input
+    id: video
+    attributes:
+      label: Video id (or URL)
+      placeholder: 2ZvSsNn6FsY
+    validations:
+      required: true
+  - type: textarea
+    id: setlist
+    attributes:
+      label: Setlist as in the video description
+      description: The lines under the setlist header, exactly as they appear.
+      render: text
+    validations:
+      required: true
+  - type: dropdown
+    id: state
+    attributes:
+      label: What did the tool do?
+      options:
+        - Delivered it as `ok`, but the cut is wrong
+        - Sent it to `review` and the proposal is wrong
+        - Sent it to `review` although the cut looks right
+        - Titles are on the wrong songs
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong, and where?
+      description: Track number, and roughly where the correct boundary is (mm:ss in the video).
+    validations:
+      required: true
+  - type: textarea
+    id: review
+    attributes:
+      label: Review JSON
+      description: The contents of `data/review/<video id>.json` if there is one, and the `tinydesk list` line for the episode.
+      render: json
+  - type: textarea
+    id: settings
+    attributes:
+      label: Settings
+      description: Your `tinydesk.toml` and any flags (source, include, language...).
+      render: toml

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question or idea
+    url: https://github.com/alexandrevl/tiny-desk-radio/discussions
+    about: Ask a question or share an idea in Discussions.
+  - name: Report a security problem
+    url: https://github.com/alexandrevl/tiny-desk-radio/security/advisories/new
+    about: Please report vulnerabilities privately, not in a public issue.

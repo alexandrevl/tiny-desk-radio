@@ -1,0 +1,43 @@
+name: Bug report
+description: Something crashes, errors out or behaves in an unexpected way.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For a song cut in the wrong place, please use the **Wrong split** template instead.
+        Do not attach audio or other copyrighted media.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What you ran, what you expected, and what you got instead.
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command and output
+      description: The exact command and the full output (remove anything private).
+      render: shell
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source and video id
+      description: Channel or playlist URL, and the video id if it concerns one video.
+  - type: textarea
+    id: config
+    attributes:
+      label: Settings
+      description: Your `tinydesk.toml` and any `TINYDESK_*` variables or flags you used.
+      render: toml
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Output of `uv run tinydesk --version`, plus your OS, chip and `ffmpeg -version | head -1`.
+      placeholder: tinydesk 0.1.0, macOS 15.1, M2, ffmpeg 7.1
+    validations:
+      required: true
