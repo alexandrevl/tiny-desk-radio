@@ -123,6 +123,7 @@ current directory, or from `--config FILE`. Unknown keys are an error.
 | `setlist_headers` | `--setlist-headers a,b` | `TINYDESK_SETLIST_HEADERS` | `setlist, set list, tracklist, track list, playlist, músicas, musicas, repertório, repertorio` |
 | `album` | `--album` | `TINYDESK_ALBUM` | `Tiny Desk Radio` |
 | `genre` | `--genre` | `TINYDESK_GENRE` | `Tiny Desk` |
+| `cookies_from_browser` | `--cookies-from-browser` | `TINYDESK_COOKIES_FROM_BROWSER` | none; set to `chrome` if YouTube asks to confirm you're not a bot |
 | `library` | `--library` | `TINYDESK_LIBRARY` | `library` |
 | `music_dir` | `--music-dir` | `TINYDESK_MUSIC_DIR` | Music's auto-add folder |
 

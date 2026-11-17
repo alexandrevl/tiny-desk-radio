@@ -41,6 +41,9 @@ def _parser() -> argparse.ArgumentParser:
     group.add_argument("--genre", help="genre tag")
     group.add_argument("--library", help="where the per-song files are kept")
     group.add_argument("--music-dir", help="Music's auto-add folder")
+    group.add_argument(
+        "--cookies-from-browser", metavar="BROWSER", help="let yt-dlp use this browser's YouTube login, e.g. chrome"
+    )
 
     delivery = argparse.ArgumentParser(add_help=False)
     delivery.add_argument("--no-deliver", action="store_true", help="only build the library, do not copy into Music")

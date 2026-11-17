@@ -126,6 +126,7 @@ ou de `--config ARQUIVO`. Chaves desconhecidas dão erro.
 | `setlist_headers` | `--setlist-headers a,b` | `TINYDESK_SETLIST_HEADERS` | `setlist, set list, tracklist, track list, playlist, músicas, musicas, repertório, repertorio` |
 | `album` | `--album` | `TINYDESK_ALBUM` | `Tiny Desk Radio` |
 | `genre` | `--genre` | `TINYDESK_GENRE` | `Tiny Desk` |
+| `cookies_from_browser` | `--cookies-from-browser` | `TINYDESK_COOKIES_FROM_BROWSER` | nenhum; use `chrome` se o YouTube pedir para confirmar que você não é um robô |
 | `library` | `--library` | `TINYDESK_LIBRARY` | `library` |
 | `music_dir` | `--music-dir` | `TINYDESK_MUSIC_DIR` | pasta de adição automática do Music |
 

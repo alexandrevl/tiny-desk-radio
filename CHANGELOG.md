@@ -7,6 +7,16 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- `cookies_from_browser` setting: lets yt-dlp use a browser's YouTube login when YouTube asks to confirm you
+  are not a bot.
+
+### Fixed
+
+- Audio downloads failing with "Requested format is not available": yt-dlp now fetches its JavaScript
+  challenge solver (`ejs:github`, needs `deno` or `node`).
+
 ## [0.1.0] - 2026-11-14
 
 ### Added

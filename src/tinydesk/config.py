@@ -37,6 +37,7 @@ class Config:
     album: str = "Tiny Desk Radio"
     genre: str = "Tiny Desk"
     library: Path = Path("library")
+    cookies_from_browser: str = ""
     music_dir: Path = field(default_factory=lambda: Path(DEFAULT_MUSIC_DIR).expanduser())
 
 

@@ -39,9 +39,17 @@ def source_url(source: str) -> str:
     return f"{root[1]}/videos" if root else source.strip()
 
 
+def _ydl_options(config: Config, **extra: object) -> dict[str, object]:
+    """YouTube demands a signed-in session and a JS challenge solver; both are configured here."""
+    options: dict[str, object] = {"quiet": True, "remote_components": ["ejs:github"], **extra}
+    if config.cookies_from_browser:
+        options["cookiesfrombrowser"] = (config.cookies_from_browser,)
+    return options
+
+
 def list_concerts(config: Config) -> list[tuple[str, str]]:
     """(video id, title) of the concert videos in the source, as listed (newest first on channels)."""
-    with YoutubeDL({"quiet": True, "extract_flat": "in_playlist"}) as ydl:
+    with YoutubeDL(_ydl_options(config, extract_flat="in_playlist")) as ydl:
         listing = ydl.extract_info(source_url(config.source), download=False)
     return [
         (entry["id"], entry["title"])
@@ -50,8 +58,8 @@ def list_concerts(config: Config) -> list[tuple[str, str]]:
     ]
 
 
-def fetch_episode(video_id: str) -> Episode:
-    with YoutubeDL({"quiet": True, "skip_download": True}) as ydl:
+def fetch_episode(video_id: str, config: Config) -> Episode:
+    with YoutubeDL(_ydl_options(config, skip_download=True)) as ydl:
         info = ydl.extract_info(f"https://www.youtube.com/watch?v={video_id}", download=False)
     jpgs = [t for t in info["thumbnails"] if t["url"].endswith(".jpg")]
     return Episode(
@@ -67,17 +75,17 @@ def fetch_episode(video_id: str) -> Episode:
     )
 
 
-def download_audio(video_id: str, directory: Path) -> Path:
+def download_audio(video_id: str, directory: Path, config: Config) -> Path:
     """Best AAC-in-M4A audio stream, cached in `directory`."""
     path = directory / f"{video_id}.m4a"
     if not path.exists():
         directory.mkdir(parents=True, exist_ok=True)
-        options = {
-            "quiet": True,
-            "noprogress": True,
-            "format": "bestaudio[ext=m4a]",
-            "outtmpl": str(directory / "%(id)s.%(ext)s"),
-        }
+        options = _ydl_options(
+            config,
+            noprogress=True,
+            format="bestaudio[ext=m4a]",
+            outtmpl=str(directory / "%(id)s.%(ext)s"),
+        )
         with YoutubeDL(options) as ydl:
             ydl.download([f"https://www.youtube.com/watch?v={video_id}"])
     return path

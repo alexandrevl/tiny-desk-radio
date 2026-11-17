@@ -68,7 +68,7 @@ def sync_episode(video_id: str, ws: Workspace, db: state.State) -> state.Row:
     """Process one episode: deliver nothing, but leave it `ok` in the library, `review`, or `skipped`."""
     _refuse_if_delivered(db, video_id)
     config = ws.config
-    episode = catalog.fetch_episode(video_id)
+    episode = catalog.fetch_episode(video_id, config)
     artist = parse_artist(episode.title, config)
     setlist = parse_setlist(episode.description, config)
     if not catalog.is_concert_title(episode.title, config):
@@ -78,7 +78,7 @@ def sync_episode(video_id: str, ws: Workspace, db: state.State) -> state.Row:
     if not setlist:
         return _skip(db, episode, artist, "no setlist in the description")
 
-    audio = catalog.download_audio(video_id, ws.audio)
+    audio = catalog.download_audio(video_id, ws.audio, config)
     job = Job(video_id, episode.title, artist, episode.year, episode.thumbnail, episode.duration, setlist)
     samples = segmentation.decode(audio)
     if episode.chapters:
